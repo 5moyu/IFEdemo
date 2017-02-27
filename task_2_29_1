@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+</head>
+<body>
+	<form action="">
+		<p>
+			姓名：
+			<input type="text" id="username">
+			<input type="button" id="btn" value="验证">
+		</p>
+		<div id="info" class="info">必填，长度为4~16个字符</div>
+	</form>
+
+	<script>
+		var Username = document.getElementById('username');
+		var oBtn = document.getElementById('btn');
+		var oDiv = document.getElementById('info');
+
+		oBtn.onclick = function(){
+			var str = Username.value;
+			var length = str.replace(/[\u0391-\uFFE5]/g,"aa").length;
+			//var length = Username.value.length;
+			if(length == 0){
+				oDiv.innerHTML = "姓名不能为空";
+				oDiv.style.color = "red";
+			}
+			else if(length>=4&&length<=16){
+				oDiv.innerHTML = "名称格式正确";
+				oDiv.style.color = "yellowgreen";
+			}else{
+				oDiv.innerHTML = "必填，长度为4~16个字符";
+				oDiv.style.color = "#111";
+			}
+		}
+	</script>
+</body>
+</html>
